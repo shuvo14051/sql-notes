@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is SQL?",
+    "answer": "SQL (Structured Query Language) is used to store, manipulate, and retrieve data from relational databases."
+  },
+  {
+    "question": "What is the difference between DELETE and TRUNCATE?",
+    "answer": "DELETE removes rows based on a condition and logs each deletion. TRUNCATE removes all rows instantly and resets the table structure without logging individual rows."
+  },
+  {
+    "question": "Write a query to find employees earning more than 50000.",
+    "answer": "You can use a simple WHERE clause:<pre><code class='language-sql'>SELECT name, salary FROM employees WHERE salary &gt; 50000;</code></pre>"
+  },
+  {
+    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "answer": "INNER JOIN returns only rows with matching keys in both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table.<pre><code class='language-sql'>SELECT a.name, b.department\nFROM employees a\nLEFT JOIN departments b ON a.dept_id = b.id;</code></pre>"
+  },
+  {
+    "question": "What is normalization?",
+    "answer": "Normalization organizes data into related tables to reduce redundancy and improve integrity."
+  }
+]
