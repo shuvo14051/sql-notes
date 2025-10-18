@@ -1,22 +1,11 @@
 [
   {
-    "question": "What is SQL?",
-    "answer": "SQL (Structured Query Language) is used to store, manipulate, and retrieve data from relational databases."
+    "question": "What is the difference between LIKE and NOT LIKE in SQL?",
+    "answer": "LIKE is used for case-insensitive pattern matching, returning rows where the column value matches the specified pattern. NOT LIKE returns rows where the column does not match that pattern.<pre><code class='language-sql'>SELECT * FROM employees WHERE name LIKE 'ABC%';\nSELECT * FROM employees WHERE name NOT LIKE 'John%';</code></pre><div style='margin-top:10px;'><strong>Common SQL pattern symbols:</strong><ul><li><code>%</code>: matches any sequence of characters (e.g., <code>ABC%</code> matches <code>ABCD</code>, <code>ABCJohn</code>, <code>ABC123</code>)</li><li><code>%ABC%</code>: matches any string that contains <code>ABC</code> anywhere within it (e.g., <code>MyABCFile</code>, <code>123ABC789</code>, <code>TestABC</code>)</li><li><code>_</code>: matches exactly one character (e.g., <code>J_hn</code> matches <code>John</code> or <code>Jahn</code>)</li><li><code>[]</code>: matches any single character within the brackets (e.g., <code>J[ao]hn</code> matches <code>John</code> or <code>Jahn</code>)</li><li><code>[^]</code>: matches any single character not within the brackets (e.g., <code>J[^o]hn</code> matches <code>Jahn</code> but not <code>John</code>)</li></ul><p>These patterns can be combined to perform flexible text filtering in SQL queries.</p></div>"
   },
-  {
-    "question": "What is the difference between DELETE and TRUNCATE?",
-    "answer": "DELETE removes rows based on a condition and logs each deletion. TRUNCATE removes all rows instantly and resets the table structure without logging individual rows."
-  },
-  {
-    "question": "Write a query to find employees earning more than 50000.",
-    "answer": "You can use a simple WHERE clause:<pre><code class='language-sql'>SELECT name, salary FROM employees WHERE salary &gt; 50000;</code></pre>"
-  },
-  {
-    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
-    "answer": "INNER JOIN returns only rows with matching keys in both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table.<pre><code class='language-sql'>SELECT a.name, b.department\nFROM employees a\nLEFT JOIN departments b ON a.dept_id = b.id;</code></pre>"
-  },
-  {
-    "question": "What is normalization?",
-    "answer": "Normalization organizes data into related tables to reduce redundancy and improve integrity."
+
+{
+    "question": "What are the LIMIT and OFFSET clauses in SQL, and how are they used?",
+    "answer": "The LIMIT and OFFSET clauses are used to control how many rows are returned by a query and where to start returning them from. LIMIT specifies the maximum number of rows to return, while OFFSET specifies how many rows to skip before starting to return results.<pre><code class='language-sql'>-- Select the first 5 movies ordered by release date\nSELECT title, release_year\nFROM movies\nORDER BY release_year ASC\nLIMIT 5;\n\n-- Skip the first 5 movies and return the next 5\nSELECT title, release_year\nFROM movies\nORDER BY release_year ASC\nLIMIT 5 OFFSET 5;</code></pre><p>These clauses are commonly used for pagination or when you only need a subset of results.</p>"
   }
 ]
