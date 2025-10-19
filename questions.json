@@ -7,5 +7,43 @@
 {
     "question": "What are the LIMIT and OFFSET clauses in SQL, and how are they used?",
     "answer": "The LIMIT and OFFSET clauses are used to control how many rows are returned by a query and where to start returning them from. LIMIT specifies the maximum number of rows to return, while OFFSET specifies how many rows to skip before starting to return results.<pre><code class='language-sql'>-- Select the first 5 movies ordered by release date\nSELECT title, release_year\nFROM movies\nORDER BY release_year ASC\nLIMIT 5;\n\n-- Skip the first 5 movies and return the next 5\nSELECT title, release_year\nFROM movies\nORDER BY release_year ASC\nLIMIT 5 OFFSET 5;</code></pre><p>These clauses are commonly used for pagination or when you only need a subset of results.</p>"
+  },
+   {
+    "question": "What is the difference between INNER JOIN and LEFT JOIN in SQL?",
+    "answer": "INNER JOIN returns only the rows where there is a match in both tables, while LEFT JOIN returns all rows from the left table and the matching rows from the right table (or NULLs if there is no match).<pre><code class='language-sql'>-- INNER JOIN: only employees with departments\nSELECT e.name, d.department_name\nFROM employees e\nINNER JOIN departments d ON e.department_id = d.id;\n\n-- LEFT JOIN: all employees, even if no department\nSELECT e.name, d.department_name\nFROM employees e\nLEFT JOIN departments d ON e.department_id = d.id;</code></pre><p>Use INNER JOIN when you only need matched records; use LEFT JOIN when you want to include all records from the left table, even if they have no match.</p>"
+  },
+
+  {
+    "question": "What is a RIGHT JOIN in SQL?",
+    "answer": "RIGHT JOIN returns all rows from the right table and the matching rows from the left table. If no match is found, NULLs are returned for columns from the left table.<pre><code class='language-sql'>-- All departments, even if no employees are assigned\nSELECT e.name, d.department_name\nFROM employees e\nRIGHT JOIN departments d ON e.department_id = d.id;</code></pre><p>RIGHT JOIN is the mirror opposite of LEFT JOIN. It ensures that all rows from the right table appear in the result.</p>"
+  },
+
+  {
+    "question": "What is a FULL OUTER JOIN and how does it differ from INNER JOIN?",
+    "answer": "FULL OUTER JOIN combines the results of LEFT and RIGHT JOINs. It returns all rows from both tables, with NULLs where there is no match. INNER JOIN, on the other hand, only returns matched rows.<pre><code class='language-sql'>-- All employees and departments, matched or not\nSELECT e.name, d.department_name\nFROM employees e\nFULL OUTER JOIN departments d ON e.department_id = d.id;</code></pre><p>FULL OUTER JOIN is useful when you need a complete view of data from both tables, including unmatched records.</p>"
+  },
+
+  {
+    "question": "How does a CROSS JOIN work in SQL?",
+    "answer": "CROSS JOIN returns the Cartesian product of two tables, meaning every row from the first table is combined with every row from the second table.<pre><code class='language-sql'>-- All possible combinations of employees and projects\nSELECT e.name, p.project_name\nFROM employees e\nCROSS JOIN projects p;</code></pre><p>If one table has 5 rows and the other has 4, the result will have 5 × 4 = 20 rows. Use CROSS JOIN carefully, as it can produce large result sets.</p>"
+  },
+
+  {
+    "question": "What is a SELF JOIN in SQL and when would you use it?",
+    "answer": "A SELF JOIN is a regular join where a table is joined with itself. It is commonly used to compare rows within the same table, such as finding hierarchical relationships or employees reporting to managers.<pre><code class='language-sql'>-- Find employees and their managers\nSELECT e.name AS employee, m.name AS manager\nFROM employees e\nJOIN employees m ON e.manager_id = m.id;</code></pre><p>SELF JOINs are useful when data within one table references other rows of the same table, such as organizational charts or hierarchical structures.</p>"
+  },
+  {
+  "question": "How is a SELF JOIN different from other types of joins in SQL?",
+  "answer": "A SELF JOIN joins a table to itself instead of joining two different tables. You use table aliases to treat one logical table as two separate instances so you can compare rows within the same dataset.<pre><code class='language-sql'>-- Example: find employees who report to a manager\nSELECT e.name AS employee, m.name AS manager\nFROM employees e\nJOIN employees m ON e.manager_id = m.id;</code></pre><p>Unlike INNER, LEFT, or RIGHT JOINs (which connect distinct tables), a SELF JOIN connects rows of the same table to show hierarchical or relational data within that table. The key is using aliases (<code>e</code> and <code>m</code> in this example) so the database treats them as two separate references during the join.</p>"
+},
+  {
+    "question": "How can you join more than two tables in SQL?",
+    "answer": "You can join multiple tables by chaining multiple JOIN clauses together. Each JOIN adds another table to the result based on a specified condition.<pre><code class='language-sql'>-- Employees with their department and location\nSELECT e.name, d.department_name, l.city\nFROM employees e\nJOIN departments d ON e.department_id = d.id\nJOIN locations l ON d.location_id = l.id;</code></pre><p>Each JOIN links another table using matching keys, allowing you to fetch related data across several tables in a single query.</p>"
+  },
+
+  {
+    "question": "What is the difference between USING and ON in SQL joins?",
+    "answer": "Both USING and ON define how tables are joined, but USING is simpler when the column name is the same in both tables. ON allows you to join on columns with different names.<pre><code class='language-sql'>-- USING (column name is the same in both tables)\nSELECT e.name, d.department_name\nFROM employees e\nJOIN departments d USING (department_id);\n\n-- ON (columns have different names)\nSELECT e.name, d.department_name\nFROM employees e\nJOIN departments d ON e.dept_id = d.id;</code></pre><p>USING automatically references the same column name from both tables, while ON gives you full control of join conditions.</p>"
   }
+  
 ]
