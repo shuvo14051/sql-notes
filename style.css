@@ -151,8 +151,10 @@ pre {
   color: #f8f8f2;
   padding: 1rem;
   border-radius: 8px;
-  overflow-x: auto;
   margin-top: 0.8rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
 }
 
 footer {
@@ -202,10 +204,10 @@ footer {
     font-size: 0.95rem;
     line-height: 1.5;
   }
-
-  pre {
-    font-size: 0.85rem;
-    padding: 0.8rem;
+pre, pre code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-x: hidden !important;
   }
 }
 
