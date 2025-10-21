@@ -163,3 +163,62 @@ footer {
   color: #555;
   margin-top: auto;
 }
+
+/* ============================= */
+/* 📱 Responsive Design Tweaks   */
+/* ============================= */
+
+@media (max-width: 900px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    max-width: 90%;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .search-box-wrapper {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  #searchBox {
+    font-size: 0.9rem;
+    padding: 0.6rem 2.2rem 0.6rem 0.9rem;
+  }
+
+  .question {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .answer {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  pre {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .search-box-wrapper {
+    width: 95%;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+}
